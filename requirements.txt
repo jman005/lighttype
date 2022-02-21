@@ -1,0 +1,4 @@
+matplotlib
+seaborn
+pyqt5
+qt-material
