@@ -68,6 +68,7 @@ class ConfigBox(QWidget):
         self.corpusSelector = self.CorpusDropdown()
         self.timeSelectDropdown = QComboBox()
         self.timeSelectDropdown.addItem("1:00")
+        self.timeSelectDropdown.addItem("2:00")
         self.timeSelectDropdown.addItem("3:00")
         self.timeSelectDropdown.addItem("5:00")
         self.timeSelectDropdown.addItem("10:00")
