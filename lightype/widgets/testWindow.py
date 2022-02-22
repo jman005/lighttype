@@ -1,4 +1,4 @@
-from PyQt5.QtGui import QKeySequence, QPainter, QBrush
+from PyQt5.QtGui import QKeySequence, QPainter, QBrush, QFontMetrics
 from PyQt5.QtWidgets import (QTextEdit, QWidget, QComboBox, QVBoxLayout, QLabel, QHBoxLayout, QGridLayout, QPushButton,
                              QShortcut)
 from PyQt5.QtCore import QEvent, QRectF, QSizeF, QPoint
@@ -241,6 +241,11 @@ class TypingTestPrompt(QTextEdit):
             if not self.started:
                 self.typingStarted.emit()
                 self.started = True
+
+            charHeight = QFontMetrics(self.font()).height()
+            if ((self.viewport().height() - self.cursorRect().bottomLeft().y()) < charHeight):
+                sbar = self.verticalScrollBar()
+                sbar.setValue(sbar.value() + charHeight)
             if event.key() == Qt.Key_Backspace:
                 return True
             if event.key() in [Qt.Key_Left, Qt.Key_Right, Qt.Key_Down, Qt.Key_Up]:
